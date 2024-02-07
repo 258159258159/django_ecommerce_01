@@ -3,7 +3,6 @@ from django.db import models
 
 #Custom queryset
 class ProductQuerySet(models.query.QuerySet):
-    
     def active(self):
         return self.filter(active = True)
 
@@ -37,9 +36,7 @@ class Product(models.Model): #product_category
     featured    = models.BooleanField(default = False)
     active      = models.BooleanField(default = True)
 
-
     objects = ProductManager()
-    
     #python 3
     def __str__(self):
         return self.title
