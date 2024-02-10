@@ -27,7 +27,6 @@ class ProductListView(ListView):
     #     print(context)
     #     return context
 
-
 #Function Based View
 def product_list_view(request):
     queryset = Product.objects.all()
@@ -67,7 +66,6 @@ class ProductDetailView(DetailView):
         if instance is None:
             raise Http404("Esse produto não existe!")
         return instance
-
 
 #Function Based View
 def product_detail_view(request, pk = None, *args, **kwargs):

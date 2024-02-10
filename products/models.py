@@ -5,6 +5,7 @@ from django.urls import reverse
 
 #Custom queryset
 class ProductQuerySet(models.query.QuerySet):
+    
     def active(self):
         return self.filter(active = True)
 
@@ -20,7 +21,7 @@ class ProductManager(models.Manager):
         return self.get_queryset().active()
 
     def featured(self):
-        #return self.get_queryset().filter(featured = True)
+        #self.get_queryset().filter(featured = True)
         return self.get_queryset().featured()
 
     def get_by_id(self, id):
@@ -38,6 +39,8 @@ class Product(models.Model): #product_category
     image       = models.FileField(upload_to = 'products/', null = True, blank = True)
     featured    = models.BooleanField(default = False)
     active      = models.BooleanField(default = True)
+    timestamp   = models.DateTimeField(auto_now_add = True)
+
 
     objects = ProductManager()
 
@@ -48,6 +51,7 @@ class Product(models.Model): #product_category
     #python 3
     def __str__(self):
         return self.title
+        
     #python 2
     def __unicode__(self):
         return self.title
